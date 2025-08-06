@@ -1,0 +1,12 @@
+import pygame
+from src.constants import WHITE
+
+class Voider(pygame.sprite.Sprite):
+    # 把玩家立即传送进空白了
+    def __init__(self, x, y):
+        super().__init__()
+        self.image = pygame.Surface([32, 32])
+        self.image.fill(WHITE)
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y

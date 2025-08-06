@@ -7,6 +7,7 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
 
         self.game = game
+        self.level = Utils.get_level(self.game.current_level)
 
         self.platforms = platforms
         self.portal = portal
@@ -22,6 +23,19 @@ class Player(pygame.sprite.Sprite):
         self.on_ground = False
         self.jump_count = 0
         self.can_jump = True
+
+    def respawn(self):
+        self.vel_x = 0
+        self.vel_y = 0
+        self.rect.x = self.level.START_POS[0]
+        self.rect.y = self.level.START_POS[1]
+        self.on_ground = True
+        self.jump_count = 0
+        self.can_jump = True
+        
+        hits = pygame.sprite.spritecollide(self, self.platforms, False)
+        for hit in hits:
+            self.rect.bottom = hit.rect.top    
 
     def get_image(self, x, y):
         image = pygame.Surface([64, 128])
@@ -57,6 +71,7 @@ class Player(pygame.sprite.Sprite):
         
         self.rect.x += self.vel_x
         
+        # platform
         hits = pygame.sprite.spritecollide(self, self.platforms, False)
         for hit in hits:
             if self.vel_x > 0:
@@ -64,11 +79,25 @@ class Player(pygame.sprite.Sprite):
             elif self.vel_x < 0:
                 self.rect.left = hit.rect.right
         
+        # crusher
+        hits = pygame.sprite.spritecollide(self, self.level.crushers, False)
+        for hit in hits:
+            self.can_jump = False
+            if self.vel_x > 0:
+                self.rect.right = hit.rect.left
+            elif self.vel_x < 0:
+                self.rect.left = hit.rect.right
+            self.rect.x += hit.speed
+
+            if pygame.sprite.spritecollide(self, self.platforms, False):
+                self.respawn()
+                return
+        
         self.rect.y += self.vel_y
-        
-        hits = pygame.sprite.spritecollide(self, self.platforms, False)
         self.on_ground = False
-        
+
+        # platform
+        hits = pygame.sprite.spritecollide(self, self.platforms, False)
         for hit in hits:
             if self.vel_y > 0:
                 self.rect.bottom = hit.rect.top
@@ -79,19 +108,38 @@ class Player(pygame.sprite.Sprite):
                 self.rect.top = hit.rect.bottom
                 self.vel_y = 0
 
+        # crusher
+        hits = pygame.sprite.spritecollide(self, self.level.crushers, False)
+        for hit in hits:
+            self.can_jump = False
+            if self.vel_y > 0:
+                self.rect.bottom = hit.rect.top
+                self.vel_y = 0
+                self.on_ground = True
+                self.jump_count = 0
+            elif self.vel_y < 0:
+                self.rect.top = hit.rect.bottom
+                self.vel_y = 0
+                self.rect.x += hit.speed
+
+            if pygame.sprite.spritecollide(self, self.platforms, False):
+                self.respawn()
+                return
+
+        # portal
         hits = pygame.sprite.spritecollide(self, pygame.sprite.Group(self.portal), False)
-        
         for hit in hits:
             if hit == self.portal:
-                print('portal hit')
                 self.game.load_level(self.game.current_level + 1)
 
-        level = Utils.get_level(self.game.current_level)
-        if self.rect.top > level.LEVEL_HEIGHT:
-            self.vel_x = 0
-            self.vel_y = 0
-            self.rect.x = level.START_POS[0]
-            self.rect.y = level.START_POS[1]
-            self.on_ground = True
-            self.jump_count = 0
-            self.can_jump = True
+        # enemies
+        hits = pygame.sprite.spritecollide(self, self.level.enemies, False)
+        for hit in hits:
+            if hit in self.level.spikes:
+                self.respawn()
+            elif hit in self.level.voiders:
+                self.vel_x = 0
+                self.vel_y = 100
+
+        if self.rect.y > self.level.LEVEL_HEIGHT:
+            self.respawn()

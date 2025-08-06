@@ -1,5 +1,8 @@
 import pygame
 from src.entities.platform import Platform
+from src.entities.voider import Voider
+from src.entities.crusher import Crusher
+from src.entities.spike import Spike
 
 LEVEL_HEIGHT = 2000
 
@@ -26,6 +29,35 @@ FLOOR5_PLATFORM2 = Platform(650, 1250, 2300, 30)
 FLOOR6_PLATFORM1 = Platform(50, 1500, 1100, 30)
 FLOOR6_PLATFORM2 = Platform(1250, 1500, 1700, 30)
 
+SPIKE1 = Spike(700, 1470, 50, 50)
+SPIKE2 = Spike(750, 1470, 50, 50)
+SPIKE3 = Spike(500, 220, 50, 30)
+SPIKE4 = Spike(1000, 220, 50, 30)
+SPIKE5 = Spike(1500, 220, 50, 30)
+SPIKE6 = Spike(1500, 470, 50, 30)
+SPIKE7 = Spike(1550, 470, 50, 30)
+SPIKE8 = Spike(200, 970, 50, 30)
+SPIKE9 = Spike(800, 970, 50, 30)
+SPIKE10 = Spike(1800, 970, 50, 30)
+SPIKE11 = Spike(100, 1220, 50, 30)
+SPIKE12 = Spike(300, 1220, 50, 30)
+SPIKE13 = Spike(1500, 1220, 50, 30)
+SPIKE14 = Spike(2500, 1220, 50, 30)
+
+CRUSHER1 = Crusher(800, 1700, 100, 100, 800, 5)
+CRUSHER2 = Crusher(600, 400, 100, 100, 200, 6)
+CRUSHER3 = Crusher(1000, 900, 100, 100, 400, 4)
+CRUSHER4 = Crusher(400, 1400, 100, 100, 500, 5)
+
+VOIDER1 = Voider(2000, 220)
+VOIDER2 = Voider(400, 720)
+VOIDER3 = Voider(1200, 720)
+VOIDER4 = Voider(2000, 720)
+VOIDER5 = Voider(800, 1220)
+VOIDER6 = Voider(1400, 1470)
+VOIDER7 = Voider(2400, 1470)
+VOIDER8 = Voider(300, 970)
+
 PORTAL_X = 100
 PORTAL_Y = 100
 
@@ -41,4 +73,20 @@ platforms = pygame.sprite.Group(
     FLOOR6_PLATFORM1, FLOOR6_PLATFORM2,
 )
 
-print('lv1')
+spikes = pygame.sprite.Group(
+    SPIKE1, SPIKE2, SPIKE3, SPIKE4, SPIKE5, SPIKE6, SPIKE7, SPIKE8, SPIKE9, SPIKE10, SPIKE11, SPIKE12, SPIKE13, SPIKE14
+)
+
+crushers = pygame.sprite.Group(
+    CRUSHER1, CRUSHER2, CRUSHER3, CRUSHER4
+)
+
+voiders = pygame.sprite.Group(
+    VOIDER1, VOIDER2, VOIDER3, VOIDER4, VOIDER5, VOIDER6, VOIDER7, VOIDER8
+)
+
+enemies = pygame.sprite.Group(
+    SPIKE1, SPIKE2, SPIKE3, SPIKE4, SPIKE5, SPIKE6, SPIKE7, SPIKE8, SPIKE9, SPIKE10, SPIKE11, SPIKE12, SPIKE13, SPIKE14,
+    CRUSHER1, CRUSHER2, CRUSHER3, CRUSHER4,
+    VOIDER1, VOIDER2, VOIDER3, VOIDER4, VOIDER5, VOIDER6, VOIDER7, VOIDER8
+)

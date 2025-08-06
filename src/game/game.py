@@ -2,6 +2,7 @@ import pygame
 from src.entities.player import Player
 from src.game.camera import Camera
 from src.constants import WIDTH, HEIGHT, WHITE
+import utils
 
 class Game:
     def __init__(self):
@@ -19,27 +20,21 @@ class Game:
         self.load_level(1)
         
     def load_level(self, level_number):
-        """Load a specific level and initialize game objects"""
         self.current_level = level_number
+        self.level = utils.Utils.get_level(self.current_level)
+        self.platforms = self.level.platforms
         
-        if level_number == 1:
-            from levels.level1 import platforms as level1_platforms
-            self.platforms = level1_platforms
-        elif level_number == 2:
-            from levels.level2 import platforms as level2_platforms
-            self.platforms = level2_platforms
-        
-        # Create player with platforms reference
         self.player = Player(100, 300, self.platforms)
-        
-        # Recreate sprites group
-        
+
         self.sprites = pygame.sprite.Group(self.player)
+                
+        for enemy in self.level.enemies:
+            self.sprites.add(enemy)
+
         for platform in self.platforms:
             self.sprites.add(platform)
     
     def handle_events(self):
-        """Handle pygame events"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
@@ -51,12 +46,10 @@ class Game:
         return True
     
     def update(self):
-        """Update game state"""
         self.sprites.update()
         self.camera.update(self.player)
     
     def render(self):
-        """Render the game"""
         self.screen.fill(WHITE)
         
         for sprite in self.sprites:
@@ -65,7 +58,6 @@ class Game:
         pygame.display.update()
     
     def run(self):
-        """Main game loop"""
         running = True
         while running:
             running = self.handle_events()

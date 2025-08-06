@@ -28,6 +28,7 @@ class Game:
         level = Utils.get_level(level_number)
 
         self.platforms = level.platforms
+        self.enemies = level.enemies
         
         self.portal = Portal(level.PORTAL_X, level.PORTAL_Y)
         self.player = Player(level.START_POS[0], level.START_POS[1], self.platforms, self.portal, self)
@@ -38,6 +39,8 @@ class Game:
         self.sprites = pygame.sprite.Group(self.player, self.portal)
         for platform in self.platforms:
             self.sprites.add(platform)
+        for enemy in self.enemies:
+            self.sprites.add(enemy)
             
     def handle_events(self):
         for event in pygame.event.get():
