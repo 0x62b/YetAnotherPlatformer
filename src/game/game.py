@@ -17,14 +17,14 @@ class Game:
         self.sprites = pygame.sprite.Group()
         self.platforms = None
         
-        self.load_level(1)
+        self.load_level(self.current_level)
         
     def load_level(self, level_number):
         self.current_level = level_number
         self.level = utils.Utils.get_level(self.current_level)
         self.platforms = self.level.platforms
         
-        self.player = Player(100, 300, self.platforms)
+        self.player = Player(self.level.START_POS[0], self.level.START_POS[1], self.platforms)
 
         self.sprites = pygame.sprite.Group(self.player)
                 
@@ -38,11 +38,7 @@ class Game:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_1:
-                    self.load_level(1)
-                elif event.key == pygame.K_2:
-                    self.load_level(2)
+        
         return True
     
     def update(self):

@@ -1,5 +1,6 @@
 import pygame
-from src.constants import BLACK, WHITE
+
+BLACK = (0, 0, 0)
 
 class Spike(pygame.sprite.Sprite):
     # 把玩家立即刺死了

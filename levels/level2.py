@@ -65,7 +65,7 @@ PLATFORM53 = Platform(1300, 2740, 160, 30)
 PLATFORM54 = Platform(1550, 2710, 150, 30)
 
 PORTAL_X = 800
-PORTAL_Y = 2550
+PORTAL_Y = 2500
 
 START_POS = (400, 700)
 
@@ -82,8 +82,6 @@ platforms = pygame.sprite.Group(
 )
 
 spikes = pygame.sprite.Group(
-    Spike(370, 880, 20, 20),
-    Spike(410, 880, 20, 20),
     Spike(1150, 810, 20, 20),
     Spike(320, 580, 20, 20),
     Spike(820, 560, 20, 20),
@@ -125,7 +123,7 @@ crushers = pygame.sprite.Group(
 )
 
 voiders = pygame.sprite.Group(
-    # n/a for floating levels
+    # none for floating level
 )
 
 enemies = pygame.sprite.Group(
