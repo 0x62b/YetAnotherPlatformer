@@ -22,5 +22,8 @@ class Utils:
             case 3:
                 import levels.level3
                 return levels.level3
+            case 4:
+                import levels.level4
+                return levels.level4
             case _:
                 raise ValueError(f"Unknown level: {level}")
