@@ -55,6 +55,8 @@ class Game:
                     self.load_level(3)
                 elif event.key == pygame.K_4:
                     self.load_level(4)
+                elif event.key == pygame.K_5:
+                    self.load_level(5)
         return True
     
     def update(self):
