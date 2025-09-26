@@ -23,6 +23,7 @@ class Player(pygame.sprite.Sprite):
         self.on_ground = False
         self.jump_count = 0
         self.can_jump = True
+        self.falling_through = False
 
     def respawn(self):
         self.vel_x = 0
@@ -32,6 +33,7 @@ class Player(pygame.sprite.Sprite):
         self.on_ground = True
         self.jump_count = 0
         self.can_jump = True
+        self.falling_through = False
         
         hits = pygame.sprite.spritecollide(self, self.platforms, False)
         for hit in hits:
@@ -72,59 +74,63 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += self.vel_x
         
         # platform
-        hits = pygame.sprite.spritecollide(self, self.platforms, False)
-        for hit in hits:
-            if self.vel_x > 0:
-                self.rect.right = hit.rect.left
-            elif self.vel_x < 0:
-                self.rect.left = hit.rect.right
+        if not self.falling_through:
+            hits = pygame.sprite.spritecollide(self, self.platforms, False)
+            for hit in hits:
+                if self.vel_x > 0:
+                    self.rect.right = hit.rect.left
+                elif self.vel_x < 0:
+                    self.rect.left = hit.rect.right
         
         # crusher
-        hits = pygame.sprite.spritecollide(self, self.level.crushers, False)
-        for hit in hits:
-            self.can_jump = False
-            if self.vel_x > 0:
-                self.rect.right = hit.rect.left
-            elif self.vel_x < 0:
-                self.rect.left = hit.rect.right
-            self.rect.x += hit.speed
+        if not self.falling_through:
+            hits = pygame.sprite.spritecollide(self, self.level.crushers, False)
+            for hit in hits:
+                self.can_jump = False
+                if self.vel_x > 0:
+                    self.rect.right = hit.rect.left
+                elif self.vel_x < 0:
+                    self.rect.left = hit.rect.right
+                self.rect.x += hit.speed
 
-            if pygame.sprite.spritecollide(self, self.platforms, False):
-                self.respawn()
-                return
+                if pygame.sprite.spritecollide(self, self.platforms, False):
+                    self.respawn()
+                    return
         
         self.rect.y += self.vel_y
         self.on_ground = False
 
         # platform
-        hits = pygame.sprite.spritecollide(self, self.platforms, False)
-        for hit in hits:
-            if self.vel_y > 0:
-                self.rect.bottom = hit.rect.top
-                self.vel_y = 0
-                self.on_ground = True
-                self.jump_count = 0
-            elif self.vel_y < 0:
-                self.rect.top = hit.rect.bottom
-                self.vel_y = 0
+        if not self.falling_through:
+            hits = pygame.sprite.spritecollide(self, self.platforms, False)
+            for hit in hits:
+                if self.vel_y > 0:
+                    self.rect.bottom = hit.rect.top
+                    self.vel_y = 0
+                    self.on_ground = True
+                    self.jump_count = 0
+                elif self.vel_y < 0:
+                    self.rect.top = hit.rect.bottom
+                    self.vel_y = 0
 
         # crusher
-        hits = pygame.sprite.spritecollide(self, self.level.crushers, False)
-        for hit in hits:
-            self.can_jump = False
-            if self.vel_y > 0:
-                self.rect.bottom = hit.rect.top
-                self.vel_y = 0
-                self.on_ground = True
-                self.jump_count = 0
-            elif self.vel_y < 0:
-                self.rect.top = hit.rect.bottom
-                self.vel_y = 0
-                self.rect.x += hit.speed
+        if not self.falling_through:
+            hits = pygame.sprite.spritecollide(self, self.level.crushers, False)
+            for hit in hits:
+                self.can_jump = False
+                if self.vel_y > 0:
+                    self.rect.bottom = hit.rect.top
+                    self.vel_y = 0
+                    self.on_ground = True
+                    self.jump_count = 0
+                elif self.vel_y < 0:
+                    self.rect.top = hit.rect.bottom
+                    self.vel_y = 0
+                    self.rect.x += hit.speed
 
-            if pygame.sprite.spritecollide(self, self.platforms, False):
-                self.respawn()
-                return
+                if pygame.sprite.spritecollide(self, self.platforms, False):
+                    self.respawn()
+                    return
 
         # portal
         hits = pygame.sprite.spritecollide(self, pygame.sprite.Group(self.portal), False)
@@ -138,8 +144,9 @@ class Player(pygame.sprite.Sprite):
             if hit in self.level.spikes:
                 self.respawn()
             elif hit in self.level.voiders:
+                self.falling_through = True
                 self.vel_x = 0
-                self.vel_y = 100
+                self.vel_y = 5
 
         if self.rect.y > self.level.LEVEL_HEIGHT:
             self.respawn()
