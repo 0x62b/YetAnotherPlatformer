@@ -21,6 +21,10 @@ class Game:
         self.load_level(1)
         
     def load_level(self, level_number):
+        if level_number == 6:
+            self.player.kill()
+            return
+
         if (self.player):
             self.player.kill()
         self.current_level = level_number

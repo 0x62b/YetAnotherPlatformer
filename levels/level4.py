@@ -5,69 +5,46 @@ from src.entities.crusher import Crusher
 from src.entities.portal import Portal
 
 LEVEL_HEIGHT = 3000
+LEVEL_WIDTH = 1700
 
-PLATFORM1 = Platform(142, 812, 132, 28)
-PLATFORM2 = Platform(388, 932, 136, 32)
-PLATFORM3 = Platform(563, 806, 168, 29)
-PLATFORM4 = Platform(792, 824, 108, 27)
-PLATFORM5 = Platform(1144, 806, 174, 33)
-PLATFORM6 = Platform(1361, 906, 128, 30)
-PLATFORM7 = Platform(23, 516, 104, 26)
-PLATFORM8 = Platform(330, 628, 92, 31)
-PLATFORM9 = Platform(513, 594, 186, 33)
-PLATFORM10 = Platform(839, 548, 162, 28)
-PLATFORM11 = Platform(1062, 592, 172, 31)
-PLATFORM12 = Platform(1439, 508, 150, 29)
-PLATFORM13 = Platform(189, 263, 72, 28)
-PLATFORM14 = Platform(426, 351, 114, 27)
-PLATFORM15 = Platform(666, 231, 92, 32)
-PLATFORM16 = Platform(987, 322, 148, 29)
-PLATFORM17 = Platform(1210, 378, 168, 31)
-PLATFORM18 = Platform(1536, 283, 144, 28)
-
-PLATFORM19 = Platform(-167, 1189, 162, 34)
-PLATFORM20 = Platform(84, 1172, 110, 28)
-PLATFORM21 = Platform(338, 1099, 170, 31)
-PLATFORM22 = Platform(596, 1053, 92, 26)
-PLATFORM23 = Platform(761, 1163, 152, 29)
-PLATFORM24 = Platform(1129, 1206, 138, 31)
-PLATFORM25 = Platform(-191, 1485, 128, 33)
-PLATFORM26 = Platform(136, 1538, 94, 29)
-PLATFORM27 = Platform(312, 1498, 186, 28)
-PLATFORM28 = Platform(628, 1512, 160, 32)
-PLATFORM29 = Platform(938, 1429, 174, 29)
-PLATFORM30 = Platform(1165, 1467, 148, 27)
-
-PLATFORM31 = Platform(-272, 1761, 72, 26)
-PLATFORM32 = Platform(-18, 1856, 132, 31)
-PLATFORM33 = Platform(232, 1725, 92, 29)
-PLATFORM34 = Platform(488, 1824, 146, 33)
-PLATFORM35 = Platform(709, 1809, 152, 28)
-PLATFORM36 = Platform(1028, 1852, 140, 30)
-PLATFORM37 = Platform(-218, 2028, 162, 33)
-PLATFORM38 = Platform(28, 2129, 116, 27)
-PLATFORM39 = Platform(292, 1991, 170, 31)
-PLATFORM40 = Platform(467, 2007, 94, 29)
-PLATFORM41 = Platform(789, 2066, 154, 32)
-PLATFORM42 = Platform(1013, 2038, 132, 28)
-
-PLATFORM43 = Platform(-67, 2379, 128, 31)
-PLATFORM44 = Platform(187, 2432, 92, 28)
-PLATFORM45 = Platform(439, 2391, 184, 33)
-PLATFORM46 = Platform(694, 2416, 142, 29)
-PLATFORM47 = Platform(912, 2331, 170, 27)
-PLATFORM48 = Platform(1293, 2358, 158, 32)
-PLATFORM49 = Platform(242, 2657, 72, 28)
-PLATFORM50 = Platform(414, 2694, 126, 30)
-PLATFORM51 = Platform(788, 2671, 96, 29)
-PLATFORM52 = Platform(973, 2716, 150, 33)
-PLATFORM53 = Platform(1276, 2718, 166, 30)
-PLATFORM54 = Platform(1583, 2739, 142, 28)
-
-PORTAL_X = 821
-PORTAL_Y = 2478
-
-START_POS = (372, 726)
+PLATFORM1 = Platform(100, 800, 140, 30)
+PLATFORM2 = Platform(300, 900, 120, 30)
+PLATFORM3 = Platform(600, 800, 180, 30)
+PLATFORM4 = Platform(900, 700, 100, 30)
+PLATFORM5 = Platform(1100, 800, 160, 30)
+PLATFORM6 = Platform(1400, 800, 140, 30)
+PLATFORM7 = Platform(0, 500, 120, 30)
+PLATFORM8 = Platform(300, 600, 100, 30)
+PLATFORM9 = Platform(500, 600, 200, 30)
+PLATFORM10 = Platform(800, 600, 150, 30)
+PLATFORM11 = Platform(1100, 500, 180, 30)
+PLATFORM12 = Platform(1400, 500, 150, 30)
+PLATFORM13 = Platform(200, 200, 80, 30)
+PLATFORM14 = Platform(400, 300, 120, 30)
+PLATFORM15 = Platform(700, 200, 100, 30)
+PLATFORM16 = Platform(1000, 200, 140, 30)
+PLATFORM17 = Platform(1200, 300, 160, 30)
+PLATFORM18 = Platform(1500, 300, 150, 30)
+PLATFORM19 = Platform(0, 1100, 150, 30)
+PLATFORM20 = Platform(100, 1200, 122, 30)
+PLATFORM21 = Platform(300, 1100, 180, 30)
+PLATFORM22 = Platform(600, 1000, 100, 30)
+PLATFORM23 = Platform(800, 1100, 160, 30)
+PLATFORM24 = Platform(1100, 1100, 140, 30)
+PLATFORM25 = Platform(0, 1400, 120, 30)
+PLATFORM26 = Platform(100, 1500, 100, 30)
+PLATFORM27 = Platform(400, 1500, 200, 30)
+PLATFORM28 = Platform(600, 1500, 150, 30)
+PLATFORM29 = Platform(900, 1500, 170, 30)
+PLATFORM30 = Platform(1200, 1400, 160, 30)
+PLATFORM31 = Platform(-100, 1700, 90, 30)
+PLATFORM32 = Platform(-100, 1800, 120, 30)
+PLATFORM33 = Platform(200, 1800, 90, 30)
+PLATFORM34 = Platform(500, 1800, 130, 30)
+PLATFORM35 = Platform(700, 1900, 160, 30)
+PLATFORM36 = Platform(1000, 1800, 140, 30)
+PLATFORM37 = Platform(-200, 2000, 150, 30)
+PLATFORM38 = Platform(0, 2100, 110, 30)
 
 platforms = pygame.sprite.Group(
     PLATFORM1, PLATFORM2, PLATFORM3, PLATFORM4, PLATFORM5, PLATFORM6,
@@ -76,53 +53,55 @@ platforms = pygame.sprite.Group(
     PLATFORM19, PLATFORM20, PLATFORM21, PLATFORM22, PLATFORM23, PLATFORM24,
     PLATFORM25, PLATFORM26, PLATFORM27, PLATFORM28, PLATFORM29, PLATFORM30,
     PLATFORM31, PLATFORM32, PLATFORM33, PLATFORM34, PLATFORM35, PLATFORM36,
-    PLATFORM37, PLATFORM38, PLATFORM39, PLATFORM40, PLATFORM41, PLATFORM42,
-    PLATFORM43, PLATFORM44, PLATFORM45, PLATFORM46, PLATFORM47, PLATFORM48,
-    PLATFORM49, PLATFORM50, PLATFORM51, PLATFORM52, PLATFORM53, PLATFORM54
+    PLATFORM37, PLATFORM38
 )
 
 spikes = pygame.sprite.Group(
-    Spike(1178, 791, 22, 20),
-    Spike(297, 604, 18, 22),
-    Spike(846, 537, 20, 18),
-    Spike(829, 581, 22, 20),
-    Spike(452, 287, 18, 20),
-    Spike(1001, 293, 20, 22),
-    Spike(985, 249, 20, 18),
-    Spike(44, 1203, 22, 20),
-    Spike(379, 1076, 18, 22),
-    Spike(873, 1128, 20, 20),
-    Spike(156, 1503, 22, 18),
-    Spike(377, 1481, 18, 22),
-    Spike(626, 1438, 20, 20),
-    Spike(-7, 1774, 18, 20),
-    Spike(252, 1756, 22, 22),
-    Spike(434, 1742, 20, 18),
-    Spike(44, 2057, 18, 20),
-    Spike(291, 2023, 20, 22),
-    Spike(546, 1987, 18, 20),
-    Spike(144, 2401, 22, 18),
-    Spike(455, 2424, 20, 22),
-    Spike(698, 2338, 18, 20),
-    Spike(499, 2682, 22, 22),
-    Spike(742, 2658, 20, 18),
-    Spike(995, 2693, 22, 20)
+    Spike(1200, 800, 20, 20),
+    Spike(300, 600, 20, 20),
+    Spike(800, 600, 20, 20),
+    Spike(900, 500, 20, 20),
+    Spike(400, 300, 20, 20),
+    Spike(1000, 300, 20, 20),
+    Spike(1000, 200, 20, 20),
+    Spike(100, 1200, 20, 20),
+    Spike(300, 1100, 20, 20),
+    Spike(800, 1100, 20, 20),
+    Spike(100, 1500, 20, 20),
+    Spike(400, 1500, 20, 20),
+    Spike(700, 1500, 20, 20),
+    Spike(0, 800, 20, 20),
+    Spike(200, 800, 20, 20),
+    Spike(500, 900, 20, 20),
+    Spike(100, 1100, 20, 20),
+    Spike(300, 400, 20, 20),
+    Spike(500, 200, 20, 20),
+    Spike(200, 400, 20, 20),
+    Spike(400, 900, 20, 20),
+    Spike(700, 600, 20, 20)
 )
 
 crushers = pygame.sprite.Group(
-    Crusher(633, 759, 22, 28, 152, 2),
-    Crusher(519, 617, 18, 32, 144, 3),
-    Crusher(1092, 497, 22, 27, 166, 2),
-    Crusher(1234, 336, 18, 29, 104, 5),
-    Crusher(286, 1118, 20, 32, 130, 2),
-    Crusher(943, 1408, 22, 29, 152, 3),
-    Crusher(788, 1837, 18, 26, 136, 4),
-    Crusher(74, 2042, 20, 30, 88, 2),
-    Crusher(927, 2359, 22, 28, 118, 3),
-    Crusher(1352, 2692, 18, 34, 128, 4)
+    Crusher(600, 780, 20, 30, 140, 2),
+    Crusher(550, 600, 20, 30, 160, 3),
+    Crusher(1100, 500, 20, 30, 140, 2),
+    Crusher(1300, 300, 20, 30, 120, 4),
+    Crusher(300, 1100, 20, 30, 140, 2),
+    Crusher(900, 1400, 20, 30, 140, 3),
+    Crusher(800, 1800, 20, 30, 120, 4),
+    Crusher(100, 2100, 20, 30, 80, 2)
+)
+
+voiders = pygame.sprite.Group(
+    # none for floating level
 )
 
 enemies = pygame.sprite.Group(
     spikes,
     crushers
 )
+
+PORTAL_X = 1800
+PORTAL_Y = 0
+
+START_POS = (420, 712)
