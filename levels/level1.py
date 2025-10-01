@@ -64,7 +64,7 @@ PLATFORM52 = Platform(1000, 2690, 140, 30)
 PLATFORM53 = Platform(1300, 2740, 160, 30)
 PLATFORM54 = Platform(1550, 2710, 150, 30)
 
-PORTAL_X = 800
+PORTAL_X = 750
 PORTAL_Y = 2500
 
 START_POS = (400, 700)
@@ -105,7 +105,6 @@ spikes = pygame.sprite.Group(
     Spike(420, 2400, 20, 20),
     Spike(670, 2360, 20, 20),
     Spike(470, 2700, 20, 20),
-    Spike(770, 2630, 20, 20),
     Spike(1020, 2670, 20, 20)
 )
 
