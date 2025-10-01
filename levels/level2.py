@@ -67,7 +67,7 @@ PLATFORM54 = Platform(1500, 2800, 140, 30)
 PORTAL_X = 900
 PORTAL_Y = 2500
 
-START_POS = (372, 726)
+START_POS = (400, 700)
 
 platforms = pygame.sprite.Group(
     PLATFORM1, PLATFORM2, PLATFORM3, PLATFORM4, PLATFORM5, PLATFORM6,
@@ -82,44 +82,48 @@ platforms = pygame.sprite.Group(
 )
 
 spikes = pygame.sprite.Group(
-    Spike(1178, 791, 22, 20),
-    Spike(297, 604, 18, 22),
-    Spike(846, 537, 20, 18),
-    Spike(829, 581, 22, 20),
-    Spike(452, 287, 18, 20),
-    Spike(1001, 293, 20, 22),
-    Spike(985, 249, 20, 18),
-    Spike(44, 1203, 22, 20),
-    Spike(379, 1076, 18, 22),
-    Spike(873, 1128, 20, 20),
-    Spike(156, 1503, 22, 18),
-    Spike(377, 1481, 18, 22),
-    Spike(626, 1438, 20, 20),
-    Spike(-7, 1774, 18, 20),
-    Spike(252, 1756, 22, 22),
-    Spike(434, 1742, 20, 18),
-    Spike(44, 2057, 18, 20),
-    Spike(291, 2023, 20, 22),
-    Spike(546, 1987, 18, 20),
-    Spike(144, 2401, 22, 18),
-    Spike(455, 2424, 20, 22),
-    Spike(698, 2338, 18, 20),
-    Spike(499, 2682, 22, 22),
-    Spike(742, 2658, 20, 18),
-    Spike(995, 2693, 22, 20)
+    Spike(1200, 380, 20, 20),
+    Spike(300, 580, 20, 20),
+    Spike(800, 480, 20, 20),
+    Spike(800, 480, 20, 20),
+    Spike(500, 580, 20, 20),
+    Spike(1000, 280, 20, 20),
+    Spike(1000, 280, 20, 20),
+    Spike(0, 1780, 20, 20),
+    Spike(400, 1080, 20, 20),
+    Spike(800, 1180, 20, 20),
+    Spike(200, 2680, 20, 20),
+    Spike(400, 1480, 20, 20),
+    Spike(600, 1480, 20, 20),
+    Spike(0, 1780, 20, 20),
+    Spike(200, 1680, 20, 20),
+    Spike(400, 1980, 20, 20),
+    Spike(100, 1780, 20, 20),
+    Spike(300, 1980, 20, 20),
+    Spike(500, 1980, 20, 20),
+    Spike(100, 1780, 20, 20),
+    Spike(400, 2380, 20, 20),
+    Spike(700, 2380, 20, 20),
+    Spike(500, 2680, 20, 20),
+    Spike(700, 2380, 20, 20),
+    Spike(1000, 2680, 20, 20)
 )
 
 crushers = pygame.sprite.Group(
-    Crusher(633, 759, 22, 28, 152, 2),
-    Crusher(519, 617, 18, 32, 144, 3),
-    Crusher(1092, 497, 22, 27, 166, 2),
-    Crusher(1234, 336, 18, 29, 104, 5),
-    Crusher(286, 1118, 20, 32, 130, 2),
-    Crusher(943, 1408, 22, 29, 152, 3),
-    Crusher(788, 1837, 18, 26, 136, 4),
-    Crusher(74, 2042, 20, 30, 88, 2),
-    Crusher(927, 2359, 22, 28, 118, 3),
-    Crusher(1352, 2692, 18, 34, 128, 4)
+    Crusher(633, 772, 22, 28, 152, 2),
+    Crusher(519, 568, 18, 32, 144, 3),
+    Crusher(1092, 273, 22, 27, 166, 2),
+    Crusher(1234, 371, 18, 29, 104, 5),
+    Crusher(286, 1068, 20, 32, 130, 2),
+    Crusher(943, 1171, 22, 29, 152, 3),
+    Crusher(788, 1774, 18, 26, 136, 4),
+    Crusher(74, 2070, 20, 30, 88, 2),
+    Crusher(927, 2272, 22, 28, 118, 3),
+    Crusher(1352, 2666, 18, 34, 128, 4)
+)
+
+voiders = pygame.sprite.Group(
+    # none for floating level
 )
 
 enemies = pygame.sprite.Group(
