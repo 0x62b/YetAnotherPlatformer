@@ -93,7 +93,7 @@ crushers = pygame.sprite.Group(
 )
 
 voiders = pygame.sprite.Group(
-    # none for floating level
+    
 )
 
 enemies = pygame.sprite.Group(
