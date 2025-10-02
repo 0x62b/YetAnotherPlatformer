@@ -1,3 +1,4 @@
+import asyncio
 import pygame
 from src.entities.player import Player
 from src.entities.portal import Portal
@@ -75,12 +76,14 @@ class Game:
         
         pygame.display.update()
     
-    def run(self):
+    async def run(self):
         running = True
         while running:
             running = self.handle_events()
             self.update()
             self.render()
             self.clock.tick(60) # 60 fps
+            
+            await asyncio.sleep(0)
         
         pygame.quit()

@@ -1,8 +1,11 @@
+# main.py
+
+import asyncio
 from src.classes import Game
 
-def main():
+async def main():
     game = Game()
-    game.run()
+    await game.run()  # <-- run must also be async
 
-if __name__ == "__main__":
-    main()
+# This will be called automatically by Pygbag when loaded in browser
+asyncio.run(main())
