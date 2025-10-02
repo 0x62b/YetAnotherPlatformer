@@ -9,7 +9,7 @@ class Game:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        pygame.display.set_caption('stick figure thingy')
+        pygame.display.set_caption('yet another platformer')
         self.clock = pygame.time.Clock()
         
         self.current_level = 1
